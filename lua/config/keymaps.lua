@@ -6,3 +6,7 @@ vim.keymap.set("n", "[<space>", "mzO<Esc>`z", { desc = "add blank line above" })
 vim.keymap.set("n", "]<space>", "mzo<Esc>`z", { desc = "add blank line below" })
 vim.keymap.set("n", "<Esc><Esc>", ":w<CR>", { desc = "write file" })
 vim.keymap.set("i", "jj", "<Esc>", { desc = "escape mode" })
+
+-- binding for Markdown Preview
+vim.keymap.set("n", "<leader>mp", "<cmd> MarkdownPreview<CR>", { desc = "Open Preview" })
+-- ["<leader>mc"] = { "<cmd> MarkdownPreviewStop<CR>", "Close Preview" },
