@@ -9,4 +9,5 @@ vim.keymap.set("i", "jj", "<Esc>", { desc = "escape mode" })
 
 -- binding for Markdown Preview
 vim.keymap.set("n", "<leader>mp", "<cmd> MarkdownPreview<CR>", { desc = "Open Preview" })
+vim.keymap.set("n", "<leader>t", "<cmd> terminal<CR>", { desc = "Open Terminal Emulator" })
 -- ["<leader>mc"] = { "<cmd> MarkdownPreviewStop<CR>", "Close Preview" },
