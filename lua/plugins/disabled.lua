@@ -2,6 +2,7 @@ return {
   -- disable trouble
   { "nvim-treesitter-context", enabled = false },
   { "folke/noice.nvim", enabled = false },
+  { "folke/todo-comments.nvim", enabled = false },
   { "nvim-lualine/lualine.nvim", enabled = false },
   { "echasnovski/mini.animate", enabled = false}, 
   { "echasnovski/mini.pairs", enabled = false}, 
