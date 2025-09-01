@@ -12,3 +12,6 @@ vim.keymap.set("n", "<C-b><C-b>", ":!b86", { desc = "Execute b86 alias" })
 vim.keymap.set("n", "<leader>mp", "<cmd> MarkdownPreview<CR>", { desc = "Open Preview" })
 vim.keymap.set("n", "<leader>t", "<cmd> terminal<CR>", { desc = "Open Terminal Emulator" })
 vim.keymap.set("n", "gs", "<cmd> ClangdSwitchSourceHeader<CR>", { desc = "Switch source/header" })
+
+vim.keymap.set("n", "<leader>ct", [[:%!column -t -s,<CR>]], { desc = "Align CSV columns" })
+
