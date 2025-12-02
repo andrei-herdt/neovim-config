@@ -18,6 +18,7 @@ return {
 {
   "CopilotC-Nvim/CopilotChat.nvim",
   branch = "main",
+  enabled = false,
   cmd = "CopilotChat",
   opts = function()
     local user = vim.env.USER or "User"
@@ -29,17 +30,27 @@ return {
       window = {
         width = 0.4,
       },
+      context = "buffer:listed",
     }
   end,
   keys = {
     { "<c-s>", "<CR>", ft = "copilot-chat", desc = "Submit Prompt", remap = true },
+    { "<C-k>",
+        function()
+          return require("CopilotChat").reset()
+        end,
+        ft = "copilot-chat",
+        desc = "Clear buffer"
+    },
     { "<leader>a", "", desc = "+ai", mode = { "n", "v" } },
-    {
-      "<leader>aa",
+    { "<leader>aa",
       function()
-        return require("CopilotChat").toggle()
+        return require("CopilotChat").toggle({
+          model = "gpt-5",
+          sticky = {"#buffer:listed"},
+          })
       end,
-      desc = "Toggle (CopilotChat)",
+      desc = "Toggle (CopilotChat, buffer context)",
       mode = { "n", "v" },
     },
     {
@@ -83,6 +94,21 @@ return {
         vim.opt_local.number = false
       end,
     })
+
+    -- Force-remove CopilotChat's <C-l> mappings (normal/insert/visual)
+    local function remove_ctrl_l(ev)
+      for _, m in ipairs({ "n", "i", "v" }) do
+        pcall(vim.keymap.del, m, "<C-l>", { buffer = ev.buf })
+      end
+    end
+
+    for _, event in ipairs({ "FileType", "BufWinEnter", "BufReadPost" }) do
+      vim.api.nvim_create_autocmd(event, {
+        pattern = "copilot-chat",
+        callback = remove_ctrl_l,
+      })
+    end
+
 
     chat.setup(opts)
   end,
