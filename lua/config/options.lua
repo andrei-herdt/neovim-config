@@ -6,3 +6,4 @@ vim.opt.relativenumber = false
 vim.opt.scrolloff = 0
 vim.opt.smoothscroll = false  -- if using 0.10+
 vim.diagnostic.disable()
+vim.opt.clipboard = "unnamedplus"
