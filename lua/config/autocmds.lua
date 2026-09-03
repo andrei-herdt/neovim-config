@@ -2,6 +2,9 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
+-- Let the external `theme` command flip this instance's colors live
+require("config.theme").listen()
+
 -- Save the buffer whenever leaving insert mode (e.g. pressing Esc)
 vim.api.nvim_create_autocmd("InsertLeave", {
   group = vim.api.nvim_create_augroup("auto_save_on_insert_leave", { clear = true }),
