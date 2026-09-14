@@ -6,5 +6,6 @@ return {
   { "folke/ts-comments.nvim", enabled = false },
   { "nvim-lualine/lualine.nvim", enabled = false },
   { "nvim-mini/mini.animate", enabled = false}, 
-  { "nvim-mini/mini.pairs", enabled = false}, 
+  { "nvim-mini/mini.pairs", enabled = false},
+  { "hrsh7th/nvim-cmp", enabled = false},
 }
