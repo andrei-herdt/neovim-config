@@ -18,9 +18,12 @@ if os.getenv("SSH_TTY") or os.getenv("SSH_CONNECTION") then
       ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
       ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
     },
+    -- Terminals/zellij usually don't answer OSC 52 read queries, which makes
+    -- nvim hang on "Waiting for OSC 52 response". Paste from the last copy
+    -- made inside nvim instead; use the terminal's paste for outside text.
     paste = {
-      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+      ["+"] = function() return vim.fn.getreg("0", 1, true), vim.fn.getregtype("0") end,
+      ["*"] = function() return vim.fn.getreg("0", 1, true), vim.fn.getregtype("0") end,
     },
   }
 end
